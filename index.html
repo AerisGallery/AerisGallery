@@ -1,19 +1,20 @@
-<!-- PURE-CSS VERSION – No JavaScript required, so it works even when scripts are blocked in Wix  -->
+<!-- PURE-CSS 3-D CAROUSEL — includes 1 guaranteed-visible test slide -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3-D Carousel – CSS-only</title>
+  <title>3-D Carousel – CSS-only (Debug)</title>
+
   <style>
     :root { --radius: 280px; }
     * { box-sizing: border-box; margin:0; padding:0; }
     body { font-family: sans-serif; }
 
     .carousel {
-      width: 600px;           /* fix width so you can see the wheel */
+      width: 600px;       /* fix width so the wheel is visible */
       height: 400px;
-      margin: 0 auto;         /* center in the embed */
+      margin: 0 auto;
       perspective: 1000px;
       position: relative;
     }
@@ -23,10 +24,8 @@
       top: 50%; left: 50%;
       transform-style: preserve-3d;
       transform: translate(-50%, -50%) translateZ(calc(-1 * var(--radius)));
-      /* Pure-CSS rotation */
       animation: spin 12s linear infinite;
     }
-
     @keyframes spin {
       from { transform: translate(-50%, -50%) translateZ(calc(-1 * var(--radius))) rotateY(  0deg); }
       to   { transform: translate(-50%, -50%) translateZ(calc(-1 * var(--radius))) rotateY(-360deg); }
@@ -44,25 +43,36 @@
     }
     .slide img { width: 100%; height: 100%; object-fit: cover; display:block; }
 
-    /* Face each of the 5 slides around the circle */
+    /* place five panels round the circle */
     .slide:nth-child(1){ transform: translate(-50%, -50%) rotateY(  0deg) translateZ(var(--radius)); }
     .slide:nth-child(2){ transform: translate(-50%, -50%) rotateY( 72deg) translateZ(var(--radius)); }
     .slide:nth-child(3){ transform: translate(-50%, -50%) rotateY(144deg) translateZ(var(--radius)); }
     .slide:nth-child(4){ transform: translate(-50%, -50%) rotateY(216deg) translateZ(var(--radius)); }
     .slide:nth-child(5){ transform: translate(-50%, -50%) rotateY(288deg) translateZ(var(--radius)); }
-
-    /* Navigation buttons optional – they need JS, so hide for now */
   </style>
 </head>
+
 <body>
   <div class="carousel">
     <div class="spinner">
-      <!-- 5 slides, all using your Wix image URL -->
-      <div class="slide"><img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="1"></div>
-      <div class="slide"><img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="2"></div>
-      <div class="slide"><img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="3"></div>
-      <div class="slide"><img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="4"></div>
-      <div class="slide"><img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="5"></div>
+      <!-- Slide 1: guaranteed-visible test image -->
+      <div class="slide">
+        <img src="https://picsum.photos/seed/debug/600/400" alt="Debug slide">
+      </div>
+
+      <!-- Slides 2-5: your images (replace with *developer* URLs) -->
+      <div class="slide">
+        <img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="Your image 1">
+      </div>
+      <div class="slide">
+        <img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="Your image 2">
+      </div>
+      <div class="slide">
+        <img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="Your image 3">
+      </div>
+      <div class="slide">
+        <img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="Your image 4">
+      </div>
     </div>
   </div>
 </body>
