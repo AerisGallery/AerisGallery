@@ -1,0 +1,69 @@
+<!-- PURE‑CSS VERSION – No JavaScript required, so it works even when scripts are blocked in Wix  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3‑D Carousel – CSS‑only</title>
+  <style>
+    :root { --radius: 280px; }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: sans-serif; }
+
+    .carousel {
+      width: 600px;           /* fix width so you can see the wheel */
+      height: 400px;
+      margin: 0 auto;         /* center in the embed */
+      perspective: 1000px;
+      position: relative;
+    }
+
+    .spinner {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform-style: preserve-3d;
+      transform: translate(-50%, -50%) translateZ(calc(-1 * var(--radius)));
+      /* Pure‑CSS rotation */
+      animation: spin 12s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) translateZ(calc(-1 * var(--radius))) rotateY(  0deg); }
+      to   { transform: translate(-50%, -50%) translateZ(calc(-1 * var(--radius))) rotateY(-360deg); }
+    }
+
+    .slide {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 70%; max-width: 420px;
+      aspect-ratio: 3/2;
+      transform: translate(-50%, -50%);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,.25);
+    }
+    .slide img { width: 100%; height: 100%; object-fit: cover; display:block; }
+
+    /* Face each of the 5 slides around the circle */
+    .slide:nth-child(1){ transform: translate(-50%, -50%) rotateY(  0deg) translateZ(var(--radius)); }
+    .slide:nth-child(2){ transform: translate(-50%, -50%) rotateY( 72deg) translateZ(var(--radius)); }
+    .slide:nth-child(3){ transform: translate(-50%, -50%) rotateY(144deg) translateZ(var(--radius)); }
+    .slide:nth-child(4){ transform: translate(-50%, -50%) rotateY(216deg) translateZ(var(--radius)); }
+    .slide:nth-child(5){ transform: translate(-50%, -50%) rotateY(288deg) translateZ(var(--radius)); }
+
+    /* Navigation buttons optional – they need JS, so hide for now */
+  </style>
+</head>
+<body>
+  <div class="carousel">
+    <div class="spinner">
+      <!-- 5 slides, all using your Wix image URL -->
+      <div class="slide"><img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="1"></div>
+      <div class="slide"><img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="2"></div>
+      <div class="slide"><img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="3"></div>
+      <div class="slide"><img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="4"></div>
+      <div class="slide"><img src="https://static.wixstatic.com/media/fb4a0c_1933db8809b546a1b7ef1d9db35a3ef2~mv2.png" alt="5"></div>
+    </div>
+  </div>
+</body>
+</html>
